@@ -1,0 +1,85 @@
+
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+
+
+
+
+/* VUE VIEW TRANSITIONS */
+    /* Enter and leave animations can use different */
+    /* durations and timing functions.              */
+
+    /* fade - <transition name="fade"> */
+    .fade-enter-active{ 
+        // position: absolute;
+         transition: opacity .5s;
+     }
+     .fade-leave-active {
+        // position: absolute;
+         transition: opacity .5s;
+     }
+     .fade-enter, .fade-leave-active {
+        // position: absolute;
+         opacity: 0;
+     }
+ 
+ 
+ .fade-down{
+     transition: transform .5s ease-in-out, opacity .8s  !important;
+     transform-origin: top center;
+ 
+     &-leave,&-leave-to {
+     opacity: 0;
+     transition: transform .5s ease-in-out, opacity .8s  !important;
+   }
+ 
+   &-enter {
+     opacity: 0;
+     transform: translateY(-100%) scaleY(0);
+   }
+ 
+   &-enter-to {
+     transition: transform .5s ease-in-out, opacity .5s !important;
+     opacity: 1;
+     transform: translateY(0px) scaleY(1);
+   }
+ }
+ 
+ 
+ .zoom-enter-active,
+ .zoom-leave-active {
+   animation-duration: 0.5s;
+   animation-fill-mode: both;
+   animation-name: zoom;
+ }
+ 
+ .zoom-leave-active {
+   animation-direction: reverse;
+ }
+ 
+ @keyframes zoom {
+   from {
+     opacity: 0;
+     transform: scale3d(0.3, 0.3, 0.3);
+   }
+ 
+   100% {
+     opacity: 1;
+   }
+ }
